@@ -26,9 +26,7 @@ public class Category {
 
     private String categoryName;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-
     private List<Question> questions;
 
     public Long getCategoryId() {

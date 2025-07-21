@@ -31,7 +31,6 @@ public class Question {
     private String userName;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JsonBackReference
     private List<Answer> answers;
 
     @ManyToOne
