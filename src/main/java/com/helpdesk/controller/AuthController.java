@@ -10,7 +10,6 @@ import com.helpdesk.Security.response.MassageResponse;
 import com.helpdesk.Security.response.RegisterResponse;
 import com.helpdesk.Security.response.UserInfoResponse;
 import com.helpdesk.Security.services.UserDetailsImpl;
-import jakarta.validation.constraints.Email;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
