@@ -119,13 +119,15 @@ public class JwtUtil {
         return cookie;
     }
 
-    public ResponseCookie getClearJwtCoockie(){
-
-        ResponseCookie cookie = ResponseCookie.from(jwtCookie,null)
-                .path("/api")
+    public ResponseCookie getClearJwtCoockie() {
+        return ResponseCookie.from(jwtCookie, "")
+                .path("/api") // Match path used during login
+                .httpOnly(true) // Use only if it was set during login
+                .secure(true)   // Required if you're using HTTPS
+                .sameSite("None") // "None" for cross-origin; "Lax" for same-origin
+                .maxAge(0) // Expire immediately
                 .build();
-
-        return cookie;
     }
+
 
 }
