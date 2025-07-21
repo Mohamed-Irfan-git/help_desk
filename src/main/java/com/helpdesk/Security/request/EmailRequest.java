@@ -1,0 +1,12 @@
+package com.helpdesk.Security.request;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class EmailRequest {
+    String email;
+}
