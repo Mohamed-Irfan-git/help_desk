@@ -62,6 +62,7 @@ public class ApplicationConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/get").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/swagger-ui/**").permitAll()
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/swagger-ui/index.html", "/webjars/**").permitAll()
                         .anyRequest().authenticated()
