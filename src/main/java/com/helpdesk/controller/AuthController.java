@@ -20,6 +20,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -83,10 +84,10 @@ public class AuthController {
 
 
         UserInfoResponse userInfoResponse = new UserInfoResponse(userDetails.getUserId(),userDetails.getFirstName(),userDetails.getLastName(),userDetails.getBatchNo(),userDetails.getDepartment(),userDetails.getEmail(),roles);
-        List<Question> questions = questionRepo.findByUserId(userDetails.getUserId());
-        if(questions.isEmpty()){
-            userInfoResponse.setQuestions(questions);
-        }
+        List<Question> questions = new ArrayList<>();
+        questions.addAll(questionRepo.findByUserId(userDetails.getUserId()));
+        userInfoResponse.setQuestions(questions);
+
         return ResponseEntity.ok().body(userInfoResponse);
     }
 
