@@ -93,7 +93,8 @@ public class ApplicationConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(List.of(
                 "http://16.171.144.81:5173",
-                "http://localhost:5173"));
+                "http://localhost:5173",
+                "https://helpdesk-production-c4f9.up.railway.app"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
