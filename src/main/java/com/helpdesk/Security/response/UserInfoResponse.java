@@ -1,5 +1,6 @@
 package com.helpdesk.Security.response;
 
+import com.helpdesk.model.Question;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,6 +20,7 @@ public class UserInfoResponse {
     private String department;
     private Integer batchNo;
     private List<String> roles;
+    private List<Question> questions;
 
 
     public UserInfoResponse(Long userId, String firstName, String lastName, Integer batchNo, String department, String email, List<String> roles) {
