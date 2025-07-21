@@ -57,7 +57,7 @@ public class ApplicationConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .cors(cors -> {}) // keep default CORS settings
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/get").permitAll()
@@ -77,6 +77,7 @@ public class ApplicationConfig {
 
         return http.build();
     }
+
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
