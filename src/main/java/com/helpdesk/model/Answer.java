@@ -41,6 +41,7 @@ public class Answer {
 
     @ManyToOne
     @JoinColumn(name = "question_id")
+    @JsonBackReference
     private Question question;
 
     public LocalDateTime getCreatedDate() {

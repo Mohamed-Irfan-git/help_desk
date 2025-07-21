@@ -104,8 +104,6 @@ public class JwtUtil {
     }
 
 
-
-
     public ResponseCookie generateJwtCookie(UserDetails userDetails) {
         String token = generateToken(userDetails);
         ResponseCookie cookie = ResponseCookie.from(jwtCookie,token)
