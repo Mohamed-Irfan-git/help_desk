@@ -1,6 +1,6 @@
 package com.helpdesk.controller;
 
-import com.helpdesk.DTO.UserDTO;
+import com.helpdesk.dto.UserDTO;
 import com.helpdesk.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

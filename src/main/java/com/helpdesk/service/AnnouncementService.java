@@ -2,10 +2,10 @@ package com.helpdesk.service;
 
 import com.helpdesk.model.Announcement;
 import com.helpdesk.model.User;
-import com.helpdesk.Repository.AnnouncementRepo;
-import com.helpdesk.Repository.UserRepo;
-import com.helpdesk.DTO.AnnouncementDTO;
-import com.helpdesk.Mapper.AnnounceMapper;
+import com.helpdesk.repository.AnnouncementRepo;
+import com.helpdesk.repository.UserRepo;
+import com.helpdesk.dto.AnnouncementDTO;
+import com.helpdesk.mapper.AnnounceMapper;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;

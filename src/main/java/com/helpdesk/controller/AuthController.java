@@ -1,23 +1,22 @@
 package com.helpdesk.controller;
 
-import com.helpdesk.Repository.QuestionRepo;
-import com.helpdesk.Repository.UserRepo;
-import com.helpdesk.Security.auth.AuthenticationService;
-import com.helpdesk.Security.request.EmailRequest;
-import com.helpdesk.Security.request.LoginRequest;
-import com.helpdesk.Security.request.PasswordResetRequest;
-import com.helpdesk.Security.request.RegisterRequest;
-import com.helpdesk.Security.response.MassageResponse;
-import com.helpdesk.Security.response.RegisterResponse;
-import com.helpdesk.Security.response.UserInfoResponse;
-import com.helpdesk.Security.services.UserDetailsImpl;
+import com.helpdesk.repository.QuestionRepo;
+import com.helpdesk.repository.UserRepo;
+import com.helpdesk.security.auth.AuthenticationService;
+import com.helpdesk.security.request.EmailRequest;
+import com.helpdesk.security.request.LoginRequest;
+import com.helpdesk.security.request.PasswordResetRequest;
+import com.helpdesk.security.request.RegisterRequest;
+import com.helpdesk.security.response.MassageResponse;
+import com.helpdesk.security.response.RegisterResponse;
+import com.helpdesk.security.response.UserInfoResponse;
+import com.helpdesk.security.services.UserDetailsImpl;
 import com.helpdesk.model.Question;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

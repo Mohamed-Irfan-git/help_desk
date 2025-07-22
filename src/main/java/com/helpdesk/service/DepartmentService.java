@@ -1,9 +1,9 @@
 package com.helpdesk.service;
 
 import com.helpdesk.model.Department;
-import com.helpdesk.Repository.DepartmentRepo;
-import com.helpdesk.DTO.DepartmentDTO;
-import com.helpdesk.Mapper.DepartmentMapper;
+import com.helpdesk.repository.DepartmentRepo;
+import com.helpdesk.dto.DepartmentDTO;
+import com.helpdesk.mapper.DepartmentMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -3,11 +3,11 @@ package com.helpdesk.service;
 import com.helpdesk.model.Category;
 import com.helpdesk.model.Question;
 import com.helpdesk.model.User;
-import com.helpdesk.Repository.CategoryRepo;
-import com.helpdesk.Repository.QuestionRepo;
-import com.helpdesk.Repository.UserRepo;
-import com.helpdesk.DTO.QuestionDTO;
-import com.helpdesk.Mapper.QuestionMapper;
+import com.helpdesk.repository.CategoryRepo;
+import com.helpdesk.repository.QuestionRepo;
+import com.helpdesk.repository.UserRepo;
+import com.helpdesk.dto.QuestionDTO;
+import com.helpdesk.mapper.QuestionMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

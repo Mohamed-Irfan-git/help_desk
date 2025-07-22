@@ -1,7 +1,7 @@
 package com.helpdesk.controller;
 
 import com.helpdesk.service.DepartmentService;
-import com.helpdesk.DTO.DepartmentDTO;
+import com.helpdesk.dto.DepartmentDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

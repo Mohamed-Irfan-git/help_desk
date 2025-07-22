@@ -1,6 +1,6 @@
 package com.helpdesk.controller;
 
-import com.helpdesk.DTO.QuestionDTO;
+import com.helpdesk.dto.QuestionDTO;
 import com.helpdesk.service.QuestionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
