@@ -106,7 +106,7 @@ public class JwtUtil {
     public ResponseCookie generateJwtCookie(UserDetails userDetails) {
         String token = generateToken(userDetails);
         ResponseCookie cookie = ResponseCookie.from(jwtCookie,token)
-                .path("/api")
+                .path("/")
                 .maxAge(7*24*60*60)
                 .httpOnly(true)
                 .secure(true)
@@ -118,7 +118,7 @@ public class JwtUtil {
 
     public ResponseCookie getClearJwtCoockie() {
         return ResponseCookie.from(jwtCookie, "")
-                .path("/api") // Match path used during login
+                .path("/") // Match path used during login
                 .httpOnly(true) // Use only if it was set during login
                 .secure(true)   // Required if you're using HTTPS
                 .sameSite("None") // "None" for cross-origin; "Lax" for same-origin
