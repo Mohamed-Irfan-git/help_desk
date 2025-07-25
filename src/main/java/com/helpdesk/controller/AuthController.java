@@ -7,6 +7,7 @@ import com.helpdesk.security.request.EmailRequest;
 import com.helpdesk.security.request.LoginRequest;
 import com.helpdesk.security.request.PasswordResetRequest;
 import com.helpdesk.security.request.RegisterRequest;
+import com.helpdesk.security.response.AuthResponse;
 import com.helpdesk.security.response.MassageResponse;
 import com.helpdesk.security.response.RegisterResponse;
 import com.helpdesk.security.response.UserInfoResponse;
@@ -51,7 +52,7 @@ public class AuthController {
         }
 
     @PostMapping("/signin")
-    public ResponseEntity<UserInfoResponse>  authenticate(@RequestBody LoginRequest request){
+    public ResponseEntity<AuthResponse>  authenticate(@RequestBody LoginRequest request){
         return authenticationService.authenticate(request);
     }
 

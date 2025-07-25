@@ -12,6 +12,7 @@ import com.helpdesk.security.config.JwtUtil;
 import com.helpdesk.security.request.LoginRequest;
 import com.helpdesk.security.request.PasswordResetRequest;
 import com.helpdesk.security.request.RegisterRequest;
+import com.helpdesk.security.response.AuthResponse;
 import com.helpdesk.security.response.RegisterResponse;
 import com.helpdesk.security.response.UserInfoResponse;
 import com.helpdesk.security.services.UserDetailsImpl;
@@ -123,35 +124,67 @@ public class AuthenticationService {
 
         return new RegisterResponse(userInfoResponse, jwtCookie);
     }
-    public ResponseEntity<UserInfoResponse> authenticate(LoginRequest request) {
+    public ResponseEntity<AuthResponse> authenticate(LoginRequest request) {
 
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                request.getEmail(),
-                request.getPassword()
+//        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+//                request.getEmail(),
+//                request.getPassword()
+//
+//        ));
+//
+//        User user = userRepository.findByEmail(request.getEmail()).orElseThrow();
+//        ResponseCookie jwtCookie = jwtService.generateJwtCookie(UserDetailsImpl.build(user));
+//
+//        UserInfoResponse  userInfoResponse =  new UserInfoResponse();
+////       userInfoResponse.setJwtToken(jwtCookie.toString());
+//        userInfoResponse.setUserId(Math.toIntExact(user.getUserId()));
+//        userInfoResponse.setEmail(user.getEmail());
+//        userInfoResponse.setFirstName(user.getFirstName());
+//        userInfoResponse.setLastName(user.getLastName());
+//        userInfoResponse.setBatchNo(user.getBatchNo());
+//        userInfoResponse.setDepartment(user.getDepartment().getDepartmentName());
+//        userInfoResponse.setRoles(
+//                user.getRoles().stream()
+//                        .map(role -> role.getRoleName().name()) // assuming getRoleName() returns AppRole enum
+//                        .collect(Collectors.toList())
+//        );
+//
+//        return ResponseEntity
+//                .ok()
+//                .header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
+//                .body(userInfoResponse);
 
-        ));
-
-        User user = userRepository.findByEmail(request.getEmail()).orElseThrow();
-        ResponseCookie jwtCookie = jwtService.generateJwtCookie(UserDetailsImpl.build(user));
-
-        UserInfoResponse  userInfoResponse =  new UserInfoResponse();
-//       userInfoResponse.setJwtToken(jwtCookie.toString());
-        userInfoResponse.setUserId(Math.toIntExact(user.getUserId()));
-        userInfoResponse.setEmail(user.getEmail());
-        userInfoResponse.setFirstName(user.getFirstName());
-        userInfoResponse.setLastName(user.getLastName());
-        userInfoResponse.setBatchNo(user.getBatchNo());
-        userInfoResponse.setDepartment(user.getDepartment().getDepartmentName());
-        userInfoResponse.setRoles(
-                user.getRoles().stream()
-                        .map(role -> role.getRoleName().name()) // assuming getRoleName() returns AppRole enum
-                        .collect(Collectors.toList())
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getPassword()
+                )
         );
 
-        return ResponseEntity
-                .ok()
-                .header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
-                .body(userInfoResponse);
+        User user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        String token = jwtService.generateToken(UserDetailsImpl.build(user));
+
+        UserInfoResponse userInfoResponse = UserInfoResponse.builder()
+                .userId(Math.toIntExact(user.getUserId()))
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .email(user.getEmail())
+                .batchNo(user.getBatchNo())
+                .department(user.getDepartment().getDepartmentName())
+                .roles(user.getRoles()
+                        .stream()
+                        .map(role -> role.getRoleName().name())
+                        .toList())
+                .build();
+
+        AuthResponse authResponse = AuthResponse.builder()
+                .token(token)
+                .user(userInfoResponse)
+                .build();
+
+        return ResponseEntity.ok(authResponse);
     }
 
     public ResponseEntity<String> signOut() {
