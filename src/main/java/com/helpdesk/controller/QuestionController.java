@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "https://help-desk-eosin.vercel.app")
 @RestController
 @RequestMapping("/api/questions")
 @RequiredArgsConstructor
